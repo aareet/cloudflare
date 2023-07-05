@@ -199,3 +199,12 @@ resource "cloudflare_record" "terraform_managed_resource_eaf0df4957054e075dfdae8
   zone_id = var.zone_id_aareet
 }
 
+resource "cloudflare_record" "terraform_managed_resource_poet_aareet_com" {
+  comment = "Changing to dummy IP from Gitlab's 35.185.44.232 to ensure canonical redirect to www"
+  name    = "poet"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.0.2.1"
+  zone_id = var.zone_id_aareet
+}
