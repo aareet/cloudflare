@@ -1,6 +1,3 @@
-variable "cloudflare_api_token" {
-  type = string
-}
 variable "zone_sapasa" {
   type = string
 }
