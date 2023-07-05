@@ -200,7 +200,7 @@ resource "cloudflare_record" "terraform_managed_resource_eaf0df4957054e075dfdae8
 }
 
 resource "cloudflare_record" "terraform_managed_resource_poet_aareet_com" {
-  comment = "Changing to dummy IP from Gitlab's 35.185.44.232 to ensure canonical redirect to www"
+  comment = "Setting dummy IP to ensure canonical redirect to www"
   name    = "poet"
   proxied = true
   ttl     = 1
