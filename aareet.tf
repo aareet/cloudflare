@@ -208,3 +208,29 @@ resource "cloudflare_record" "terraform_managed_resource_poet_aareet_com" {
   value   = "192.0.2.1"
   zone_id = var.zone_id_aareet
 }
+
+resource "cloudflare_page_rule" "terraform_managed_resource_70f15c1082f9024006d30a3d53faa019" {
+  priority = 2
+  status   = "active"
+  target   = "aareet.com/*"
+  zone_id  = var.zone_id_aareet
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/$1"
+    }
+  }
+}
+
+resource "cloudflare_page_rule" "terraform_managed_resource_8d0da16dd63dc90b8ec7c68abded80b6" {
+  priority = 1
+  status   = "active"
+  target   = "poet.aareet.com/*"
+  zone_id  = var.zone_id_aareet
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/poetry/$1"
+    }
+  }
+}

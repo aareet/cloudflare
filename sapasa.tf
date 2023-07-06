@@ -73,3 +73,15 @@ resource "cloudflare_record" "terraform_managed_resource_3030d32b3f313a1ea96409b
   zone_id = var.zone_id_sapasa
 }
 
+resource "cloudflare_page_rule" "terraform_managed_resource_1020e72f98fcbecb3c74b6188c499e89" {
+  priority = 1
+  status   = "active"
+  target   = "http://*vancouversapasa.org/*"
+  zone_id  = var.zone_id_sapasa
+  actions {
+    forwarding_url {
+      status_code = 302
+      url         = "https://www.facebook.com/vansapasa"
+    }
+  }
+}

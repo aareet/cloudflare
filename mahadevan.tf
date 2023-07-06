@@ -129,3 +129,28 @@ resource "cloudflare_record" "terraform_managed_resource_5ef7174261cec43e8310420
   zone_id = var.zone_id_mahadevan
 }
 
+resource "cloudflare_page_rule" "terraform_managed_resource_cdd7311acb66f5bb1e43c928423d7d6c" {
+  priority = 2
+  status   = "active"
+  target   = "mahadevan.ca/*"
+  zone_id  = var.zone_id_mahadevan
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/$1"
+    }
+  }
+}
+
+resource "cloudflare_page_rule" "terraform_managed_resource_bbcd234c440a67b116af7e9552fe205f" {
+  priority = 1
+  status   = "active"
+  target   = "www.mahadevan.ca/*"
+  zone_id  = var.zone_id_mahadevan
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/$1"
+    }
+  }
+}
