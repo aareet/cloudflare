@@ -163,15 +163,6 @@ resource "cloudflare_record" "terraform_managed_resource_4acde1e4596d15d22098ee0
   zone_id = data.cloudflare_zone.aareet.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_a733bd21f250e4b99c52d6dc870972ab" {
-  name    = "_gitlab-pages-verification-code"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "gitlab-pages-verification-code=b9c763aeaf2e760014a2bbe315c6ded7"
-  zone_id = data.cloudflare_zone.aareet.id
-}
-
 resource "cloudflare_record" "terraform_managed_resource_257c7f7a3c089e6453a371bd9fe5ea93" {
   name    = "_gitlab-pages-verification-code.episodes"
   proxied = false
