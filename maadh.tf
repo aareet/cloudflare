@@ -103,7 +103,7 @@ resource "cloudflare_record" "terraform_managed_resource_1d86a9512fa9170b8267dea
 
 # Resources below required for functioning page rules
 
-resource "cloudflare_record" "dummy_ip_for_redirect" {
+resource "cloudflare_record" "dummy_maadh_ip_for_redirect" {
   comment = "Set to dummy IP to ensure canonical redirect via page rule"
   name    = "maadh.com"
   proxied = true
@@ -113,7 +113,7 @@ resource "cloudflare_record" "dummy_ip_for_redirect" {
   zone_id = data.cloudflare_zone.maadh.id
 }
 
-resource "cloudflare_page_rule" "redirect_to_aareet" {
+resource "cloudflare_page_rule" "redirect_maadh_to_aareet" {
   priority = 1
   status   = "active"
   target   = "maadh.com/*"
