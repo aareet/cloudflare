@@ -101,3 +101,27 @@ resource "cloudflare_record" "terraform_managed_resource_1d86a9512fa9170b8267dea
   zone_id = data.cloudflare_zone.maadh.id
 }
 
+# Resources below required for functioning page rules
+
+resource "cloudflare_record" "dummy_ip_for_redirect" {
+  comment = "Set to dummy IP to ensure canonical redirect via page rule"
+  name    = "maadh.com"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.0.2.1"
+  zone_id = data.cloudflare_zone.maadh.id
+}
+
+resource "cloudflare_page_rule" "redirect_to_aareet" {
+  priority = 1
+  status   = "active"
+  target   = "maadh.com/*"
+  zone_id  = data.cloudflare_zone.maadh.id
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/$1"
+    }
+  }
+}
