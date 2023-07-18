@@ -72,3 +72,27 @@ resource "cloudflare_record" "terraform_managed_resource_3ed7ce0e25287354c731af5
   zone_id = data.cloudflare_zone.shermon.id
 }
 
+# Resources below required for functioning page rules
+
+resource "cloudflare_record" "dummy_shermon_ip_for_redirect" {
+  comment = "Set to dummy IP to ensure canonical redirect via page rule"
+  name    = "shermon.com"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.0.2.1"
+  zone_id = data.cloudflare_zone.shermon.id
+}
+
+resource "cloudflare_page_rule" "redirect_shermon_to_aareet" {
+  priority = 1
+  status   = "active"
+  target   = "shermon.com/*"
+  zone_id  = data.cloudflare_zone.shermon.id
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://www.aareet.com/$1"
+    }
+  }
+}
