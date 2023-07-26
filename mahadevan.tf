@@ -130,7 +130,7 @@ resource "cloudflare_record" "terraform_managed_resource_5ef7174261cec43e8310420
 }
 
 resource "cloudflare_page_rule" "terraform_managed_resource_cdd7311acb66f5bb1e43c928423d7d6c" {
-  priority = 2
+  priority = 3
   status   = "active"
   target   = "mahadevan.ca/*"
   zone_id  = data.cloudflare_zone.mahadevan.id
@@ -170,7 +170,7 @@ resource "cloudflare_record" "terraform_managed_withjoy_A_record" {
 }
 
 resource "cloudflare_page_rule" "terraform_managed_withjoy_pagerule" {
-  priority = 1
+  priority = 2
   status   = "active"
   target   = "celebrate.mahadevan.ca/*"
   zone_id  = data.cloudflare_zone.mahadevan.id
