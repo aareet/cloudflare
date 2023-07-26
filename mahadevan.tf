@@ -154,3 +154,30 @@ resource "cloudflare_page_rule" "terraform_managed_resource_bbcd234c440a67b116af
     }
   }
 }
+
+
+# WithJoy forwarding configuration
+# Redirect celebrate.mahadevan.ca to https://withjoy.com/radhika-and-aareet-celebration
+
+resource "cloudflare_record" "terraform_managed_withjoy_A_record" {
+  comment = "Dummy A record so that page rule will work."
+  name    = "celebrate"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.0.2.1"
+  zone_id = data.cloudflare_zone.mahadevan.id
+}
+
+resource "cloudflare_page_rule" "terraform_managed_withjoy_pagerule" {
+  priority = 1
+  status   = "active"
+  target   = "celebrate.mahadevan.ca/*"
+  zone_id  = data.cloudflare_zone.mahadevan.id
+  actions {
+    forwarding_url {
+      status_code = 301
+      url         = "https://withjoy.com/radhika-and-aareet-celebration"
+    }
+  }
+}
