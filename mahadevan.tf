@@ -177,7 +177,7 @@ resource "cloudflare_page_rule" "terraform_managed_withjoy_pagerule" {
   actions {
     forwarding_url {
       status_code = 301
-      url         = "https://withjoy.com/radhika-and-aareet-celebration"
+      url         = "https://pp.events/aarzrG6n"
     }
   }
 }
