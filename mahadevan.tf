@@ -1,12 +1,3 @@
-resource "cloudflare_record" "terraform_managed_resource_2da7d4098d99dc3042a9bdff3815468a" {
-  name    = "aareet"
-  proxied = true
-  ttl     = 1
-  type    = "A"
-  value   = "35.185.44.232"
-  zone_id = data.cloudflare_zone.mahadevan.id
-}
-
 resource "cloudflare_record" "terraform_managed_resource_f1725bb1c1813526ea0043fc72fc181c" {
   comment = "Dummy A record so that page rule will work."
   name    = "mahadevan.ca"
