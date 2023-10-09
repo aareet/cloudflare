@@ -19,7 +19,7 @@ resource "cloudflare_record" "terraform_managed_resource_f0c64aeddf8a9fd0ef82155
   zone_id  = data.cloudflare_zone.drshankar.id
 }
 
-resource "cloudflare_record" "cloudflare_email_routing_record_3" {
+resource "cloudflare_record" "drshankar_cloudflare_email_routing_record_3" {
   name     = "drshankar.ca"
   priority = 88
   proxied  = false
