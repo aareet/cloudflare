@@ -1,3 +1,53 @@
+# Cloudflare email routing configuration
+resource "cloudflare_record" "terraform_managed_resource_7bca0507c0fecf87c1a83d218ee8ffb8" {
+  name     = "krsnaa.com"
+  priority = 40
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route1.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.krsnaa.id
+}
+
+resource "cloudflare_record" "terraform_managed_resource_1ec383e2540454efc7b16f5e533f6924" {
+  name     = "krsnaa.com"
+  priority = 89
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route2.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.krsnaa.id
+}
+
+resource "cloudflare_record" "cloudflare_email_routing_record_3" {
+  name     = "krsnaa.com"
+  priority = 33
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route3.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.krsnaa.id
+}
+
+resource "cloudflare_record" "terraform_managed_resource_a0741eafafcfe1363381b378b84bb19e" {
+  name    = "krsnaa.com"
+  proxied = false
+  ttl     = 1
+  type    = "TXT"
+  value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  zone_id = data.cloudflare_zone.krsnaa.id
+}
+
+# Sendgrid configuration for bots.krsnaa.com
+resource "cloudflare_record" "terraform_managed_resource_baa1855b1a2c1cf8ff7627d2803375da" {
+  name    = "bots"
+  proxied = false
+  ttl     = 1
+  type    = "TXT"
+  value   = "v=spf1 include:sendgrid.net ~all"
+  zone_id = data.cloudflare_zone.krsnaa.id
+}
+
 resource "cloudflare_record" "terraform_managed_resource_44cd4f14f9e0924687203fff1cf4a2ec" {
   name    = "em4535.bots"
   proxied = false
@@ -25,44 +75,7 @@ resource "cloudflare_record" "terraform_managed_resource_4184eb8a39cb1de5f3d48d5
   zone_id = data.cloudflare_zone.krsnaa.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_96599df545a73cd33c04149ae6871ff8" {
-  name    = "sig1._domainkey"
-  proxied = false
-  ttl     = 1
-  type    = "CNAME"
-  value   = "sig1.dkim.krsnaa.com.at.icloudmailadmin.com"
-  zone_id = data.cloudflare_zone.krsnaa.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_7bca0507c0fecf87c1a83d218ee8ffb8" {
-  name     = "krsnaa.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx02.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.krsnaa.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_1ec383e2540454efc7b16f5e533f6924" {
-  name     = "krsnaa.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx01.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.krsnaa.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_baa1855b1a2c1cf8ff7627d2803375da" {
-  name    = "bots"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "v=spf1 include:sendgrid.net ~all"
-  zone_id = data.cloudflare_zone.krsnaa.id
-}
-
+# Cloudflare dmarc for bare domain
 resource "cloudflare_record" "terraform_managed_resource_969ae7172bd551e8a3c5ae9328dc2d05" {
   name    = "_dmarc"
   proxied = false
@@ -72,6 +85,7 @@ resource "cloudflare_record" "terraform_managed_resource_969ae7172bd551e8a3c5ae9
   zone_id = data.cloudflare_zone.krsnaa.id
 }
 
+# Github pages verification
 resource "cloudflare_record" "terraform_managed_resource_f74088c5c849e611d5aee0350decbcaa" {
   name    = "_github-pages-challenge-aareet"
   proxied = false
@@ -81,21 +95,5 @@ resource "cloudflare_record" "terraform_managed_resource_f74088c5c849e611d5aee03
   zone_id = data.cloudflare_zone.krsnaa.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_413e4ad4f3f30b3d8f839090d269482d" {
-  name    = "krsnaa.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "apple-domain=cq0KGTmeOxMUhC1Z"
-  zone_id = data.cloudflare_zone.krsnaa.id
-}
 
-resource "cloudflare_record" "terraform_managed_resource_a0741eafafcfe1363381b378b84bb19e" {
-  name    = "krsnaa.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "v=spf1 include:icloud.com ~all"
-  zone_id = data.cloudflare_zone.krsnaa.id
-}
 
