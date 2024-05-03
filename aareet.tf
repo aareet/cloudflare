@@ -26,15 +26,6 @@ resource "cloudflare_record" "terraform_managed_resource_f59077b7abb01112aa584c1
   zone_id = data.cloudflare_zone.aareet.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_bd63b402c693af0515dd70dcb7d6906a" {
-  name    = "sig1._domainkey"
-  proxied = false
-  ttl     = 1
-  type    = "CNAME"
-  value   = "sig1.dkim.aareet.com.at.icloudmailadmin.com"
-  zone_id = data.cloudflare_zone.aareet.id
-}
-
 resource "cloudflare_record" "terraform_managed_resource_9c9f815c226c1e783d7558176aa7df64" {
   name    = "u4afkn3wutst"
   proxied = false
@@ -71,26 +62,6 @@ resource "cloudflare_record" "terraform_managed_resource_85210554aa916a6cfbd80e5
   zone_id = data.cloudflare_zone.aareet.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_8e7ae1eb39c49338049d8ae176187648" {
-  name     = "aareet.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx02.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.aareet.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_de332210e91f3bcb40a628b9df2df330" {
-  name     = "aareet.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx01.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.aareet.id
-}
-
 resource "cloudflare_record" "terraform_managed_resource_bf715646a2d9a4ab750c78fb5e8b434d" {
   name    = "aareet.com"
   proxied = false
@@ -100,30 +71,12 @@ resource "cloudflare_record" "terraform_managed_resource_bf715646a2d9a4ab750c78f
   zone_id = data.cloudflare_zone.aareet.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_1c6d3e3660fd05a50d1110c78d3ea79d" {
-  name    = "aareet.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "v=spf1 include:icloud.com ~all"
-  zone_id = data.cloudflare_zone.aareet.id
-}
-
 resource "cloudflare_record" "terraform_managed_resource_e5298935f7e2e4d10a1b4b5ddea86fd3" {
   name    = "aareet.com"
   proxied = false
   ttl     = 1
   type    = "TXT"
   value   = "keybase-site-verification=eF5KuKZ077HDA-sZkXjupalKJLPGhr-t--qd4mOf3io"
-  zone_id = data.cloudflare_zone.aareet.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_fdadcdae7ce1e563699d386ccbe8d79b" {
-  name    = "aareet.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "apple-domain=AqcbcIu2FhDkbZi2"
   zone_id = data.cloudflare_zone.aareet.id
 }
 
