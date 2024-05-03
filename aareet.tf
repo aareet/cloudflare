@@ -178,3 +178,42 @@ resource "cloudflare_page_rule" "terraform_managed_resource_8d0da16dd63dc90b8ec7
     }
   }
 }
+
+# Cloudflare email routing configuration
+resource "cloudflare_record" "aareet_email_route_mx1" {
+  name     = "aareet.com"
+  priority = 40
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route1.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.aareet.id
+}
+
+resource "cloudflare_record" "aareet_email_route_mx2" {
+  name     = "aareet.com"
+  priority = 89
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route2.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.aareet.id
+}
+
+resource "cloudflare_record" "aareet_email_route_mx3" {
+  name     = "aareet.com"
+  priority = 33
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route3.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.aareet.id
+}
+
+resource "cloudflare_record" "aareet_email_route_spf" {
+  name    = "aareet.com"
+  proxied = false
+  ttl     = 1
+  type    = "TXT"
+  value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  zone_id = data.cloudflare_zone.aareet.id
