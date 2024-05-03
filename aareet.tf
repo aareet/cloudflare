@@ -217,3 +217,4 @@ resource "cloudflare_record" "aareet_email_route_spf" {
   type    = "TXT"
   value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
   zone_id = data.cloudflare_zone.aareet.id
+}
