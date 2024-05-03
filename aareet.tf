@@ -182,7 +182,7 @@ resource "cloudflare_page_rule" "terraform_managed_resource_8d0da16dd63dc90b8ec7
 # Cloudflare email routing configuration
 resource "cloudflare_record" "aareet_email_route_mx1" {
   name     = "aareet.com"
-  priority = 40
+  priority = 7
   proxied  = false
   ttl      = 1
   type     = "MX"
@@ -192,7 +192,7 @@ resource "cloudflare_record" "aareet_email_route_mx1" {
 
 resource "cloudflare_record" "aareet_email_route_mx2" {
   name     = "aareet.com"
-  priority = 89
+  priority = 28
   proxied  = false
   ttl      = 1
   type     = "MX"
@@ -202,7 +202,7 @@ resource "cloudflare_record" "aareet_email_route_mx2" {
 
 resource "cloudflare_record" "aareet_email_route_mx3" {
   name     = "aareet.com"
-  priority = 33
+  priority = 43
   proxied  = false
   ttl      = 1
   type     = "MX"
