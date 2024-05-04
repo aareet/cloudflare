@@ -1,31 +1,45 @@
-resource "cloudflare_record" "terraform_managed_resource_acc8b8a21311ba86520ab7fe6734efff" {
-  name    = "sig1._domainkey"
+# Email routing configuration
+
+resource "cloudflare_record" "maadh_email_mx1" {
+  name     = "maadh.com"
+  priority = 85
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route1.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.maadh.id
+}
+
+resource "cloudflare_record" "maadh_email_mx2" {
+  name     = "maadh.com"
+  priority = 48
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route2.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.maadh.id
+}
+
+resource "cloudflare_record" "maadh_email_mx3" {
+  name     = "maadh.com"
+  priority = 35
+  proxied  = false
+  ttl      = 1
+  type     = "MX"
+  value    = "route3.mx.cloudflare.net"
+  zone_id  = data.cloudflare_zone.maadh.id
+}
+
+resource "cloudflare_record" "maadh_email_spf" {
+  name    = "maadh.com"
   proxied = false
   ttl     = 1
-  type    = "CNAME"
-  value   = "sig1.dkim.maadh.com.at.icloudmailadmin.com"
+  type    = "TXT"
+  value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
   zone_id = data.cloudflare_zone.maadh.id
 }
 
-resource "cloudflare_record" "terraform_managed_resource_e20d99f535899c7a94ce31e52896b63b" {
-  name     = "maadh.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx02.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.maadh.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_369125f277428594bd62e0ce0c5c1122" {
-  name     = "maadh.com"
-  priority = 10
-  proxied  = false
-  ttl      = 1
-  type     = "MX"
-  value    = "mx01.mail.icloud.com"
-  zone_id  = data.cloudflare_zone.maadh.id
-}
+# post.maadh.com email configuration
 
 resource "cloudflare_record" "terraform_managed_resource_e2eb7afcb92c314176a910ded381990d" {
   name     = "post"
@@ -47,6 +61,8 @@ resource "cloudflare_record" "terraform_managed_resource_6dacfd0923e68820636ab5e
   zone_id  = data.cloudflare_zone.maadh.id
 }
 
+# DMARC not really applicable to cloudflare, but set up to catch spoofing
+
 resource "cloudflare_record" "terraform_managed_resource_517e3e8c36ddf426dc561fcbf8c48ce8" {
   name    = "_dmarc"
   proxied = false
@@ -56,30 +72,14 @@ resource "cloudflare_record" "terraform_managed_resource_517e3e8c36ddf426dc561fc
   zone_id = data.cloudflare_zone.maadh.id
 }
 
+# general DNS records, not related to email
+
 resource "cloudflare_record" "terraform_managed_resource_21266e9835fa29c19c7ef3dfd1de321d" {
   name    = "_github-pages-challenge-aareet"
   proxied = false
   ttl     = 1
   type    = "TXT"
   value   = "c336ec7d1a5e65335d861581d9e404"
-  zone_id = data.cloudflare_zone.maadh.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_2a83bb9a39510446be75a4e85051f2d1" {
-  name    = "maadh.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "v=spf1 include:icloud.com ~all"
-  zone_id = data.cloudflare_zone.maadh.id
-}
-
-resource "cloudflare_record" "terraform_managed_resource_ca1c50b74673a9a87128be2894167278" {
-  name    = "maadh.com"
-  proxied = false
-  ttl     = 1
-  type    = "TXT"
-  value   = "apple-domain=zmhIv1eleB6E9nJK"
   zone_id = data.cloudflare_zone.maadh.id
 }
 
