@@ -1,13 +1,5 @@
-# bhajans.radhika.ca CNAME
-resource "cloudflare_record" "terraform_managed_resource_e84fcc723b4505cfd564ae6825d38585" {
-  name    = "bhajans"
-  proxied = true
-  ttl     = 1
-  type    = "CNAME"
-  value   = "bhajans.notion.site"
-  zone_id = data.cloudflare_zone.radhika.id
-}
-
+# bhajans.radhika.ca CNAME REMOVED (using page rules to redirect to bhajans.notion.site instead.
+# pages verification maintained in case we want to switch back to gitlab in the future.
 resource "cloudflare_record" "terraform_managed_resource_e9bfd842797682498c1923a7fa106474" {
   name    = "_gitlab-pages-verification-code.bhajans"
   proxied = false
