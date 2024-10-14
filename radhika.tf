@@ -9,6 +9,17 @@ resource "cloudflare_record" "terraform_managed_resource_e9bfd842797682498c1923a
   zone_id = data.cloudflare_zone.radhika.id
 }
 
+# Dummy A record so redirect will work.
+resource "cloudflare_record" "terraform_managed_resource_radhika_bhajans_redirect" {
+  comment = "Dummy A record so that page rule will work."
+  name    = "bhajans"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.0.2.1"
+  zone_id = data.cloudflare_zone.radhika.id
+}
+
 # Cloudflare email configuration
 resource "cloudflare_record" "terraform_managed_resource_6c1385cf9025672c803cbfbf73c21ee6" {
   name     = "radhika.ca"
