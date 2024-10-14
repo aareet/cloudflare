@@ -4,7 +4,7 @@ resource "cloudflare_record" "terraform_managed_resource_e84fcc723b4505cfd564ae6
   proxied = true
   ttl     = 1
   type    = "CNAME"
-  value   = "radstah.gitlab.io"
+  value   = "bhajans.notion.site"
   zone_id = data.cloudflare_zone.radhika.id
 }
 
